@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Indian Languages Translation Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  label, button {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  #paragraphs {
+    margin-top: 10px;
+  }
+  .paragraph {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  .paragraph.selected {
+    background-color: #cce5ff;
+    border-color: #007bff;
+  }
+  select {
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 1rem;
+  }
+  button {
+    padding: 10px 15px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  #result {
+    margin-top: 25px;
+    white-space: pre-wrap;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 150px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Indian Languages Translation Demo</h1>
+
+<label>Select a paragraph:</label>
+<div id="paragraphs">
+  <div class="paragraph" tabindex="0">
+    India, the land of incredible diversity, stretches across a vast geographical expanse that encompasses a wide array of cultural, linguistic, and ecological landscapes. With over 1.3 billion people, it stands as the world's largest democracy, where traditions dating back thousands of years coexist with rapid modernization. The country’s ancient heritage is evident in its monuments, festivals, and religious practices, while simultaneously embracing cutting-edge advancements in science and technology. The varied topography—from the majestic Himalayas in the north to the serene beaches in the south—offers a rich tapestry of natural beauty. Each region boasts its unique cuisine, clothing styles, and folk arts, creating a mosaic that reflects both unity and diversity. India's economic growth in recent decades has positioned it as a global player, contributing significantly to sectors like information technology, space exploration, and renewable energy. Yet, challenges remain in areas such as education, healthcare, and environmental sustainability, driving ongoing efforts to create a balanced and inclusive society.
+  </div>
+  <div class="paragraph" tabindex="0">
+    The Indian subcontinent’s linguistic heritage is one of the most intricate and fascinating aspects of its cultural identity. Recognized officially with 22 scheduled languages, India is home to hundreds of dialects spoken across its states and union territories. This rich linguistic diversity arises from centuries of migrations, invasions, and cultural assimilations. Languages such as Hindi, Bengali, Tamil, Telugu, Marathi, and Urdu have deep literary traditions that continue to thrive alongside newer forms of expression in cinema, music, and digital media. The government promotes multilingual education policies aimed at preserving regional languages while also encouraging proficiency in English and Hindi, often considered bridging languages. This multilingual environment fosters an environment of cultural exchange and mutual respect, even as it presents unique challenges in communication and administration. The scripts used for writing these languages vary widely, from Devanagari and Bengali scripts to Tamil and Kannada alphabets, each with its unique history and aesthetic appeal.
+  </div>
+  <div class="paragraph" tabindex="0">
+    Festivals form the heart of Indian social and cultural life, transcending religious and regional boundaries to bring communities together in celebration. Diwali, the festival of lights, symbolizes the triumph of good over evil and is marked by vibrant displays of lamps, fireworks, and sweets. Holi, the festival of colors, ushers in spring with joyous throwing of colored powders and water, fostering camaraderie and renewal. Eid celebrates the end of Ramadan with communal prayers, feasting, and acts of charity, while Christmas commemorates the birth of Christ with gatherings, decorations, and goodwill. These festivals not only offer a glimpse into the country's spiritual fabric but also serve as occasions to strengthen social bonds and pass cultural values from one generation to the next. Music, dance, traditional dress, and regional delicacies play integral roles in these festivities, highlighting the rich tapestry of Indian heritage.
+  </div>
+  <div class="paragraph" tabindex="0">
+    India's rapid progress in science and technology has garnered international attention, with significant contributions in fields such as space research, information technology, and pharmaceuticals. The Indian Space Research Organisation (ISRO) has achieved remarkable milestones, including the Mars Orbiter Mission and various satellite launches that have enhanced communication and environmental monitoring. The IT sector, centered around hubs like Bengaluru and Hyderabad, powers a substantial portion of the global software and service industries, providing employment to millions and driving economic growth. Innovations in renewable energy, especially solar power, reflect the country's commitment to sustainable development. Alongside these advancements, startups and entrepreneurs across India are harnessing technology to address social challenges in healthcare, education, and agriculture. This vibrant ecosystem of innovation continues to evolve, supported by government initiatives and a youthful, tech-savvy population eager to shape the future.
+  </div>
+  <div class="paragraph" tabindex="0">
+    Education in India has undergone significant transformation over the years, expanding access and improving quality through various government and private sector efforts. From primary schooling to higher education and research, the system serves one of the largest student populations worldwide. Initiatives like the Right to Education Act have sought to make schooling compulsory and free for children aged 6 to 14. The establishment of institutions of national importance, such as the Indian Institutes of Technology (IITs) and Indian Institutes of Management (IIMs), has bolstered India’s reputation in engineering, management, and sciences. Despite progress, challenges such as teacher shortages, infrastructure gaps, and disparities between urban and rural areas persist. Programs aimed at digital literacy, vocational training, and skill development are being implemented to prepare youth for the demands of a rapidly changing global economy. Education remains a vital pillar for India’s aspirations of inclusive growth and social equity.
+  </div>
+</div>
+
+<label for="language">Select target language:</label>
+<select id="language">
+  <option value="Hindi">Hindi</option>
+  <option value="Bengali">Bengali</option>
+  <option value="Telugu">Telugu</option>
+  <option value="Marathi">Marathi</option>
+  <option value="Tamil">Tamil</option>
+  <option value="Gujarati">Gujarati</option>
+  <option value="Urdu">Urdu</option>
+  <option value="Kannada">Kannada</option>
+  <option value="Odia">Odia</option>
+  <option value="Malayalam">Malayalam</option>
+  <option value="Punjabi">Punjabi</option>
+  <option value="Assamese">Assamese</option>
+  <option value="Maithili">Maithili</option>
+  <option value="Santali">Santali</option>
+  <option value="Kashmiri">Kashmiri</option>
+  <option value="Nepali">Nepali</option>
+  <option value="Sindhi">Sindhi</option>
+  <option value="Dogri">Dogri</option>
+  <option value="Manipuri">Manipuri</option>
+  <option value="Bodo">Bodo</option>
+</select>
+
+<button id="translateBtn">Translate</button>
+
+<div id="result"></div>
+
+<script>
+  const paragraphs = document.querySelectorAll('.paragraph');
+  let selectedParagraph = null;
+
+  paragraphs.forEach(p => {
+    p.addEventListener('click', () => {
+      paragraphs.forEach(pg => pg.classList.remove('selected'));
+      p.classList.add('selected');
+      selectedParagraph = p;
+    });
+
+    p.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        p.click();
+      }
+    });
+  });
+
+  const languageSelect = document.getElementById('language');
+  const translateBtn = document.getElementById('translateBtn');
+  const resultDiv = document.getElementById('result');
+
+  translateBtn.addEventListener('click', async () => {
+    if (!selectedParagraph) {
+      resultDiv.textContent = 'Please select a paragraph first.';
+      return;
+    }
+
+    const content = selectedParagraph.innerText.trim();
+    const language = languageSelect.value;
+
+    resultDiv.textContent = 'Translating...';
+
+    try {
+      const response = await fetch('https://translator-qm58.onrender.com/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content, language }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        resultDiv.textContent = 'Error: ' + (error.error || 'Unknown error');
+        return;
+      }
+
+      const data = await response.json();
+      resultDiv.textContent = data.translation || 'No translation received.';
+    } catch (err) {
+      resultDiv.textContent = 'Error contacting server.';
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
