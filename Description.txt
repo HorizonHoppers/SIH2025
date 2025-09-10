@@ -1,0 +1,128 @@
+# SIH 2025 Problem Statement: ID 25019
+
+## Problem Description
+
+Many government schools in Nabha and nearby rural areas lack updated computer infrastructure, reliable internet connectivity, and access to quality digital educational resources. Teachers and students struggle to use outdated systems, and digital literacy remains low. As a result, students face difficulties in learning essential digital skills and accessing modern educational content, leading to a widening gap between rural and urban education standards.
+
+## Impact / Why This Problem Needs to Be Solved
+
+The lack of digital resources and skills limits students’ academic growth and future employability. With the increasing importance of digital literacy, students in rural Nabha risk being left behind, perpetuating cycles of educational and economic disadvantage. Addressing this problem is urgent to ensure equitable access to quality education and to empower rural youth with skills for the modern world.
+
+## Expected Outcomes
+
+- A mobile and web-based digital learning app that works offline.
+- Interactive lessons in local languages to improve engagement.
+- Digital literacy modules tailored for rural students.
+- Teacher dashboards to track student progress.
+- Optimized for low-end devices and poor connectivity.
+
+## Stakeholders / Beneficiaries
+
+- Rural school students and teachers in Nabha.
+- School administrators.
+- Parents.
+- Punjab Education Department.
+
+---
+
+## 💡 Our Proposed Solution: "Siksha Setu" by Team HorizonHoppers
+
+### Website Structure
+
+1. **Landing Page**
+2. **Login System** — Separate login for students, teachers, staff, and admin.
+3. **Student Dashboard** — Personalized dashboard with:
+   - Video Lectures
+   - Class Notes (Multilingual + Dyslexia font)
+   - Daily Practice Problems (Downloadable)
+4. **Teacher Dashboard** — Upload content for students:
+   - Upload videos, notes, and DPPs
+5. **Admin Panel** — Full administrative control.
+
+---
+
+## 🎯 Key Features
+
+- 🎙️ **Voice-Controlled Navigation** — Accessibility for visually impaired students.
+- 🧾 **Attendance Tracking & Performance Dashboard** — Real-time student progress.
+- 🌐 **Offline-First Access** — Videos and DPPs are downloadable.
+- 🗣️ **Multilingual Notes + Opendyslexic Font** — For dyslexic students and regional language support.
+- 🔊 **Text-to-Speech Integration** — TTS support across the platform.
+
+---
+
+## 💎 What Makes Siksha Setu Unique?
+
+- Built for **offline usability** and **low-end devices** — unlike most modern LMS platforms.
+- Designed with **inclusivity and accessibility first**, including:
+  - Dyslexia-friendly fonts
+  - Multilingual interfaces
+  - Voice-based control
+- Content personalization through Gemini API and AI-powered tools.
+- Built-in **text-to-speech** and **transliteration** with support from Gemini.
+- Designed specifically for **rural Indian education challenges**.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| HTML, CSS, Bootstrap | Frontend UI |
+| Node.js, Express      | Backend APIs |
+| Gemini API            | AI translation, chatbot, TTS, etc. |
+| Flask (planned)       | Python-based microservices for ML integration |
+| JavaScript            | Widget behavior, logic |
+| OpenDyslexic Font     | Accessibility |
+| Progressive Web App (PWA) *(future)* | Full offline usability and installable mobile app |
+
+---
+
+## 🔮 Future Plans
+
+- Convert to **Progressive Web App (PWA)** for better offline capabilities.
+- Integrate **AI-powered analytics** for personalized learning recommendations.
+- Expand to other states with **state-board-specific content**.
+- Introduce **gamification** for better engagement.
+
+---
+
+## ❓ Common Questions and Answers
+
+**Q: How is Siksha Setu different from DIKSHA or other platforms?**  
+A: DIKSHA focuses more on content delivery for teachers. Siksha Setu emphasizes **student-centric design**, **offline-first access**, **inclusivity features**, and **local customization**, which existing platforms lack.
+
+**Q: Can the system work without the internet?**  
+A: Yes, we have planned for video and DPP downloads and are targeting full offline capability via PWA.
+
+**Q: Is AI used?**  
+A: Yes, Gemini API is used for:
+- Translation + transliteration
+- Personalized chatbot
+- Text-to-speech
+- Localized content delivery
+
+**Q: How are you handling multiple languages?**  
+A: Gemini API + multilingual content + transliteration allows seamless switching and understanding across regional languages.
+
+**Q: Who is your target audience?**  
+A: Students and teachers in **rural Punjab**, especially areas with **low digital literacy**.
+
+---
+
+## 👥 Team: HorizonHoppers
+
+- **Team Leader**: Mr. Sandip Pramanik  
+- **Team Members**:
+  - Mr. Shivam Roy
+  - Mr. Agnimitra Sasaru
+  - Mr. Srijan Pramanik
+  - Mr. Ritam Koley
+  - Ms. Deepika Reddy
+
+---
+
+## 🔗 GitHub Repository (for Gemini Reference)
+
+`https://github.com/HorizonHoppers//SIH2025/Description.txt`
+
