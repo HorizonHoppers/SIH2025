@@ -16,6 +16,7 @@ if (!GEMINI_API_KEY) {
 app.use(cors());
 app.use(express.json());
 
+// === Translate Route ===
 app.post("/translate", async (req, res) => {
   const { content, language } = req.body;
 
@@ -41,58 +42,90 @@ Content: "${content}"
   const body = {
     contents: [
       {
-        parts: [
-          {
-            text: promptText,
-          },
-        ],
+        parts: [{ text: promptText }],
       },
     ],
   };
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${url}?key=${GEMINI_API_KEY}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-goog-api-key": GEMINI_API_KEY,
       },
       body: JSON.stringify(body),
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      return res
-        .status(response.status)
-        .json({ error: `Gemini API error: ${errorText}` });
-    }
-
     const data = await response.json();
-    //console.log("Gemini API response:", JSON.stringify(data, null, 2));
 
-    let translatedText = "No valid translation returned";
+    let translatedText = data?.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text)
+      .join("\n") || "No valid translation returned";
 
-    if (data.candidates && data.candidates[0]?.content?.parts) {
-      translatedText = data.candidates[0].content.parts
-        .map(part => part.text)
-        .join("\n");
-    } else if (data.outputs && data.outputs[0]?.text) {
-      translatedText = data.outputs[0].text;
-    } else if (typeof data.text === "string") {
-      translatedText = data.text;
-    }
-
-    translatedText =
-      typeof translatedText === "string"
-        ? translatedText.trim()
-        : String(translatedText);
-
-    res.json({ translation: translatedText });
+    res.json({ translation: translatedText.trim() });
   } catch (error) {
     console.error("Error calling Gemini API:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+app.post("/chat", async (req, res) => {
+  const { prompt } = req.body;
+
+  if (!prompt) {
+    return res.status(400).json({ error: "Missing prompt in request body" });
+  }
+  const referenceURL = "https://github.com/HorizonHoppers/SIH2025/blob/main/Description.txt"
+  const fullPrompt = `
+You are a friendly chatbot assistant for "Siksha Setu," a digital learning platform for rural students and teachers.
+
+- Keep your answers concise and under 800 characters.
+- Always respond positively and clearly.
+- Encourage users to learn about Siksha Setu’s features such as offline access, multilingual support, voice navigation, attendance tracking, and personalized dashboards.
+
+Knowledge base:
+---
+Siksha Setu is a mobile and web app aimed at improving rural education in Nabha, Punjab. It offers offline videos, multilingual notes, dyslexia-friendly fonts, voice navigation, attendance tracking, personalized dashboards, and text-to-speech features.
+
+Team HorizonHoppers created it to empower rural students and teachers with digital literacy despite low internet.
+
+---
+Reference file: "${referenceURL}"
+User input: "${prompt}"
+`;
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: fullPrompt }] }],
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    let chatbotResponse = data?.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text)
+      .join("\n")
+      ?.trim();
+
+    if (!chatbotResponse || chatbotResponse.length < 5) {
+      chatbotResponse =
+        "I didn’t quite catch that. Would you like to know more about Siksha Setu and how it helps rural students and teachers?";
+    }
+
+    res.json({ response: chatbotResponse });
+  } catch (error) {
+    console.error("Error in chatbot API:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
