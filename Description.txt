@@ -124,5 +124,5 @@ A: Students and teachers in **rural Punjab**, especially areas with **low digita
 
 ## 🔗 GitHub Repository (for Gemini Reference)
 
-`https://github.com/HorizonHoppers//SIH2025/Description.txt`
+`https://github.com/HorizonHoppers/SIH2025/blob/main/Description.txt`
 
